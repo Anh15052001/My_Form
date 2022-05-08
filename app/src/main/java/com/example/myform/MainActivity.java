@@ -18,9 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
+import java.util.PropertyPermission;
 
 public class MainActivity extends AppCompatActivity {
-    protected EditText edtMSSV, edtName, edtValid, edtPhone, edtEmail, edtCountry;
+    protected EditText edtMSSV, edtName, edtValid, edtPhone, edtEmail, edtCountry, Place;
     RadioButton radioButton1, radioButton2;
     CheckBox checkBox1, checkBox2, checkBox3, checkBox4, checkBoxForce;
     TextView textViewDate;
@@ -65,36 +66,61 @@ public class MainActivity extends AppCompatActivity {
         String cccd = edtValid.getText().toString();
         String phone = edtPhone.getText().toString();
         String email = edtEmail.getText().toString();
-        //String born = showDate.getText().toString();
+        String born = showDate.getText().toString();
+        String country = edtCountry.getText().toString();
+        String place = Place.getText().toString();
+
         if (name.length()==0)
         {
             edtName.setBackgroundResource(R.drawable.back);
+        }
+        else {
+            edtName.setBackgroundResource(R.drawable.normal);
         }
         if (mssv.length()==0)
         {
             edtMSSV.setBackgroundResource(R.drawable.back);
 
         }
+        else {
+            edtMSSV.setBackgroundResource(R.drawable.normal);
+        }
         if(cccd.length()==0)
         {
             edtValid.setBackgroundResource(R.drawable.back);
+        }
+        else {
+            edtValid.setBackgroundResource(R.drawable.normal);
         }
         if(phone.length()==0)
         {
             edtPhone.setBackgroundResource(R.drawable.back);
         }
+        else {
+            edtPhone.setBackgroundResource(R.drawable.normal);
+        }
         if (email.length()==0)
         {
             edtEmail.setBackgroundResource(R.drawable.back);
+        }
+        else {
+            edtEmail.setBackgroundResource(R.drawable.normal);
         }
         if (!radioButton1.isChecked() && !radioButton2.isChecked())
         {
             radioButton1.setBackgroundResource(R.drawable.back);
             radioButton2.setBackgroundResource(R.drawable.back);
         }
+        else {
+            radioButton1.setBackgroundResource(R.drawable.normal);
+            radioButton2.setBackgroundResource(R.drawable.normal);
+        }
         if (!checkBoxForce.isChecked())
         {
             checkBoxForce.setBackgroundResource(R.drawable.back);
+        }
+        else {
+            checkBoxForce.setBackgroundResource(R.drawable.normal);
         }
         if (name.length()==0||mssv.length()==0||cccd.length()==0||phone.length()==0||email.length()==0
         ||(!radioButton1.isChecked() && !radioButton2.isChecked())||!checkBoxForce.isChecked())
@@ -102,6 +128,65 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Bạn nhập thiếu thông tin", Toast.LENGTH_SHORT).show();
         }
         else {
+            edtName.setBackgroundResource(R.drawable.correct);
+            edtMSSV.setBackgroundResource(R.drawable.correct);
+            edtValid.setBackgroundResource(R.drawable.correct);
+            edtPhone.setBackgroundResource(R.drawable.correct);
+            edtEmail.setBackgroundResource(R.drawable.correct);
+            checkBoxForce.setBackgroundResource(R.drawable.correct);
+            if(radioButton1.isChecked())
+            {
+                radioButton1.setBackgroundResource(R.drawable.correct);
+                radioButton2.setBackgroundResource(R.drawable.normal);
+            }
+            if (radioButton2.isChecked())
+            {
+                radioButton1.setBackgroundResource(R.drawable.normal);
+                radioButton2.setBackgroundResource(R.drawable.correct);
+            }
+            if(!TextUtils.isEmpty(born)) {
+                showDate.setBackgroundResource(R.drawable.correct);
+
+            }
+            else {
+                showDate.setBackgroundResource(R.drawable.normal);
+            }
+            if (!TextUtils.isEmpty(country))
+            {
+                edtCountry.setBackgroundResource(R.drawable.correct);
+            }
+            else {
+                edtCountry.setBackgroundResource(R.drawable.normal);
+            }
+            if(!TextUtils.isEmpty(place)){
+                Place.setBackgroundResource(R.drawable.correct);
+            }
+            else {
+                Place.setBackgroundResource(R.drawable.normal);
+            }
+            if(checkBox1.isChecked())
+            {
+                checkBox1.setBackgroundResource(R.drawable.correct);
+            }
+            else {
+                checkBox1.setBackgroundResource(R.drawable.normal);
+            }
+            if (checkBox2.isChecked())
+            {
+                checkBox2.setBackgroundResource(R.drawable.correct);
+            }
+            else {
+                checkBox2.setBackgroundResource(R.drawable.normal);
+            }
+            if (checkBox3.isChecked())
+            {
+                checkBox3.setBackgroundResource(R.drawable.correct);
+            }
+            else {
+                checkBox3.setBackgroundResource(R.drawable.normal);
+            }
+
+
 
             Toast.makeText(this, "Nhập dữ liệu thành công", Toast.LENGTH_LONG).show();
         }
@@ -126,5 +211,6 @@ public class MainActivity extends AppCompatActivity {
         checkBox3 = (CheckBox) findViewById(R.id.cb3);
         checkBox4 = (CheckBox) findViewById(R.id.cb4);
         checkBoxForce = (CheckBox) findViewById(R.id.rbforce);
+        Place = (EditText) findViewById(R.id.place);
     }
 }

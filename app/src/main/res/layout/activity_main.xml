@@ -206,6 +206,7 @@
         />
 
     <EditText
+        android:id="@+id/place"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nhập vào nơi ở hiện tại"
